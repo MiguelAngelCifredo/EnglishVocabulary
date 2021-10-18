@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Languages" >
+    <menu >
+        <item
+                android:id="@+id/eng_esp"
+                android:title="ENG -> ESP" />
+        <item
+                android:id="@+id/esp_eng"
+                android:title="ESP -> ENG" />
+        <item
+                android:id="@+id/both"
+                android:title="both" />
+    </menu>
+    </item>
+    <item android:title="Units" >
+        <menu >
+            <item
+                android:id="@+id/unit00"
+                android:title="All units"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit01"
+                android:title="Unit 1"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit02"
+                android:title="Unit 2"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit03"
+                android:title="Unit 3"
+                android:checkable="true"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/deleteCorrects"
+        android:title="Delete corrects"
+        android:checkable="true"/>
+
+
+</menu>
