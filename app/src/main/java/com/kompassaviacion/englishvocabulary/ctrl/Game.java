@@ -11,6 +11,7 @@ public class Game {
     private static int numQuestion;
     private static int languageMode = 0;
     private static boolean deleteCorrects = false;
+    private static String answerCorrect;
 
     private static final boolean[] unit = new boolean[10];
 
@@ -39,24 +40,18 @@ public class Game {
         if (lq == 0) {
             lq = new Random().nextInt(2) + 1;
         }
-        if (lq == 1)
+        if (lq == 1) {
             q = vocabulary.get(numQuestion).getEnglishTerm();
-        else
+            answerCorrect = vocabulary.get(numQuestion).getSpanishTerm();
+        } else {
             q = vocabulary.get(numQuestion).getSpanishTerm();
+            answerCorrect = vocabulary.get(numQuestion).getEnglishTerm();
+        }
         return q;
     }
 
     public static String getAnswerTerm() {
-        String q;
-        int lq = languageMode;
-        if (lq == 0) {
-            lq = new Random().nextInt(2) + 1;
-        }
-        if (lq == 1)
-            q = vocabulary.get(numQuestion).getSpanishTerm();
-        else
-            q = vocabulary.get(numQuestion).getEnglishTerm();
-        return q;
+        return answerCorrect;
     }
 
     public static boolean getDeleteCorrects() {
@@ -110,14 +105,17 @@ public class Game {
     public static void check() {
         String correct = getAnswerTerm().trim().toLowerCase();
         String intent = MainActivity.txtIntent.getText().toString().trim().toLowerCase();
-        String texto;
+        String texto = "";
         if (intent.equals(correct)) {
-            texto = "CORRECTO !";
+            texto = "CORRECT !";
             if (getDeleteCorrects()) {
                 vocabulary.remove(numQuestion);
             }
         } else {
-            texto = "FALLO, era \n" + correct;
+            if (intent.length() > 0) {
+                texto = "ERROR\n";
+            }
+            texto += correct;
         }
         MainActivity.lblResult.setText(texto);
 
