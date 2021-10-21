@@ -54,11 +54,32 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+
+        menu.findItem(R.id.eng_esp).setChecked(Game.getLanguageMode() == 1);
+        menu.findItem(R.id.esp_eng).setChecked(Game.getLanguageMode() == 2);
+        menu.findItem(R.id.both).setChecked(Game.getLanguageMode() == 0);
+
         menu.findItem(R.id.deleteCorrects).setChecked(Game.getDeleteCorrects());
+
         menu.findItem(R.id.unit00).setChecked(Game.getUnitVisibility(0));
         menu.findItem(R.id.unit01).setChecked(Game.getUnitVisibility(1));
         menu.findItem(R.id.unit02).setChecked(Game.getUnitVisibility(2));
         menu.findItem(R.id.unit03).setChecked(Game.getUnitVisibility(3));
+        menu.findItem(R.id.unit04).setChecked(Game.getUnitVisibility(4));
+        menu.findItem(R.id.unit05).setChecked(Game.getUnitVisibility(5));
+        menu.findItem(R.id.unit06).setChecked(Game.getUnitVisibility(6));
+        menu.findItem(R.id.unit07).setChecked(Game.getUnitVisibility(7));
+        menu.findItem(R.id.unit08).setChecked(Game.getUnitVisibility(8));
+
+        menu.findItem(R.id.unit01).setEnabled(Game.existsUnit(1));
+        menu.findItem(R.id.unit02).setEnabled(Game.existsUnit(2));
+        menu.findItem(R.id.unit03).setEnabled(Game.existsUnit(3));
+        menu.findItem(R.id.unit04).setEnabled(Game.existsUnit(4));
+        menu.findItem(R.id.unit05).setEnabled(Game.existsUnit(5));
+        menu.findItem(R.id.unit06).setEnabled(Game.existsUnit(6));
+        menu.findItem(R.id.unit07).setEnabled(Game.existsUnit(7));
+        menu.findItem(R.id.unit08).setEnabled(Game.existsUnit(8));
+
         return true;
     }
 
@@ -75,6 +96,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.unit01: Game.setUnitVisibility(1, !Game.getUnitVisibility(1)); break;
             case R.id.unit02: Game.setUnitVisibility(2, !Game.getUnitVisibility(2)); break;
             case R.id.unit03: Game.setUnitVisibility(3, !Game.getUnitVisibility(3)); break;
+            case R.id.unit04: Game.setUnitVisibility(4, !Game.getUnitVisibility(4)); break;
+            case R.id.unit05: Game.setUnitVisibility(5, !Game.getUnitVisibility(5)); break;
+            case R.id.unit06: Game.setUnitVisibility(6, !Game.getUnitVisibility(6)); break;
+            case R.id.unit07: Game.setUnitVisibility(7, !Game.getUnitVisibility(7)); break;
+            case R.id.unit08: Game.setUnitVisibility(8, !Game.getUnitVisibility(8)); break;
 
         }
         return true;

@@ -50,7 +50,7 @@ public class Game {
         return q;
     }
 
-    public static String getAnswerTerm() {
+    public static String getAnswerCorrect() {
         return answerCorrect;
     }
 
@@ -103,7 +103,8 @@ public class Game {
     }
 
     public static void check() {
-        String correct = getAnswerTerm().trim().toLowerCase();
+        String correct = getAnswerCorrect().trim().toLowerCase();
+        String question = MainActivity.lblQuest.getText().toString().trim().toLowerCase();
         String intent = MainActivity.txtIntent.getText().toString().trim().toLowerCase();
         String texto = "";
         if (intent.equals(correct)) {
@@ -115,8 +116,9 @@ public class Game {
             if (intent.length() > 0) {
                 texto = "ERROR\n";
             }
-            texto += correct;
+            texto += question + " : " + correct;
         }
+        MainActivity.txtIntent.setText("");
         MainActivity.lblResult.setText(texto);
 
         playNewTerm();
@@ -125,11 +127,22 @@ public class Game {
 
     public static void playNewTerm() {
         generateNumQuestion();
-
-        //vocabulary.forEach(ss -> System.out.println(ss));
         MainActivity.lblUnit.setText("Unit " + vocabulary.get(numQuestion).getUnit());
         MainActivity.lblSubject.setText("Subject: " + vocabulary.get(numQuestion).getsSubject());
         MainActivity.lblQuest.setText(getQuestionTerm());
+    }
 
+    public static boolean existsUnit(int u) {
+        boolean existe = false;
+        try {
+            int cont = 0;
+            do {
+                String unidad = "" + u;
+                String uni = vocabulary.get(cont).getUnit();
+                existe = uni.equals(unidad);
+                cont++;
+            } while (cont < vocabulary.size() && !existe);
+        }catch (Exception e) {}
+        return existe;
     }
 }

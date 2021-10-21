@@ -6,13 +6,16 @@
     <menu >
         <item
                 android:id="@+id/eng_esp"
-                android:title="ENG -> ESP" />
+                android:title="ENG -> ESP"
+                android:checkable="true"/>
         <item
                 android:id="@+id/esp_eng"
-                android:title="ESP -> ENG" />
+                android:title="ESP -> ENG"
+                android:checkable="true"/>
         <item
                 android:id="@+id/both"
-                android:title="both" />
+                android:title="both"
+                android:checkable="true"/>
     </menu>
     </item>
     <item android:title="Units" >
@@ -32,6 +35,26 @@
             <item
                 android:id="@+id/unit03"
                 android:title="Unit 3"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit04"
+                android:title="Unit 4"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit05"
+                android:title="Unit 5"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit06"
+                android:title="Unit 6"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit07"
+                android:title="Unit 7"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/unit08"
+                android:title="Unit 8"
                 android:checkable="true"/>
         </menu>
     </item>
