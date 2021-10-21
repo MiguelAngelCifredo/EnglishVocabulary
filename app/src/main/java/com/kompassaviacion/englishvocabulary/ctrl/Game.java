@@ -1,5 +1,7 @@
 package com.kompassaviacion.englishvocabulary.ctrl;
 
+import android.widget.Toast;
+
 import com.kompassaviacion.englishvocabulary.MainActivity;
 import com.kompassaviacion.englishvocabulary.model.Term;
 
@@ -88,12 +90,13 @@ public class Game {
     }
 
     public static void generateNumQuestion() {
-        if (vocabulary.size() == 0) {
+
+        if (vocabulary.size() == 0 || numQuestion==vocabulary.size()) {
             System.exit(0);
         }
         boolean esValido;
         do {
-            numQuestion = new Random().nextInt(vocabulary.size() - 1);
+            numQuestion = new Random().nextInt(vocabulary.size() - 1) + 1;
             esValido = false;
             if (getUnitVisibility(0))
                 esValido = true;
