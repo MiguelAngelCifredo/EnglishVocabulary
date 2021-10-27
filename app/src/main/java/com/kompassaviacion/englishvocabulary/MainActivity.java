@@ -1,5 +1,7 @@
 package com.kompassaviacion.englishvocabulary;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,16 +19,26 @@ import com.kompassaviacion.englishvocabulary.ctrl.Game;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static AppCompatActivity main;
+
     public static EditText txtIntent;
     public static TextView lblResult;
     public static TextView lblQuest;
     public static TextView lblUnit;
     public static TextView lblSubject;
+
     public static ImageView imgFlag;
+    public static ImageView imgFlagQuestion;
+    public static ImageView imgFlagAnswer;
+
+    public static TextView lblCorrectQuestion;
+    public static TextView lblCorrectAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        main = this;
+
         setContentView(R.layout.activity_main);
 
         lblUnit = findViewById(R.id.lblUnit);
@@ -34,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
         lblQuest = findViewById(R.id.lblQuest);
         txtIntent = findViewById(R.id.txtIntent);
         lblResult = findViewById(R.id.lblResult);
+        lblCorrectQuestion = findViewById(R.id.lblCorrectQuestion);
+        lblCorrectAnswer = findViewById(R.id.lblCorrectAnswer);
+
         imgFlag = findViewById(R.id.imgFlag);
+        imgFlagQuestion = findViewById(R.id.imgFlagQuestion);
+        imgFlagAnswer = findViewById(R.id.imgFlagAnswer);
 
         String url = "https://kompassaviacion.com/english/vocabulary.txt";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -47,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(stringRequest);
 
         findViewById(R.id.btnCheck).setOnClickListener(v -> Game.check());
+
+        findViewById(R.id.lblMeetMe).setOnClickListener(v-> {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/miguelangelcifredo/"));
+            startActivity(i);
+        });
 
     }
 

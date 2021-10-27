@@ -1,6 +1,6 @@
 package com.kompassaviacion.englishvocabulary.ctrl;
 
-import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import com.kompassaviacion.englishvocabulary.MainActivity;
 import com.kompassaviacion.englishvocabulary.R;
@@ -15,6 +15,7 @@ public class Game {
     private static int languageMode = 0;
     private static boolean deleteCorrects = false;
     private static String answerCorrect;
+    private static int languageQuestion = 0;
 
     private static final boolean[] unit = new boolean[10];
 
@@ -43,6 +44,7 @@ public class Game {
         if (lq == 0) {
             lq = new Random().nextInt(2) + 1;
         }
+        languageQuestion = lq;
         if (lq == 1) {
             q = vocabulary.get(numQuestion).getEnglishTerm();
             answerCorrect = vocabulary.get(numQuestion).getSpanishTerm();
@@ -100,7 +102,6 @@ public class Game {
         boolean esValido;
         do {
             numQuestion = new Random().nextInt(vocabulary.size() - 1) + 1;
-            esValido = false;
             if (getUnitVisibility(0))
                 esValido = true;
             else
@@ -115,20 +116,32 @@ public class Game {
         String texto = "";
         if (intent.equals(correct)) {
             texto = "CORRECT !";
+            MediaPlayer mPlayer = MediaPlayer.create(MainActivity.main, R.raw.correct);
+            mPlayer.start();
             if (getDeleteCorrects()) {
                 vocabulary.remove(numQuestion);
             }
         } else {
             if (intent.length() > 0) {
-                texto = "ERROR\n";
+                texto = "ERROR";
+                MediaPlayer mPlayer = MediaPlayer.create(MainActivity.main, R.raw.fallo);
+                mPlayer.start();
             }
-            texto += question + " : " + correct;
         }
         MainActivity.txtIntent.setText("");
         MainActivity.lblResult.setText(texto);
 
-        playNewTerm();
+        if(languageQuestion == 1) {
+            MainActivity.imgFlagQuestion.setImageResource(R.drawable.flag_uk);
+            MainActivity.imgFlagAnswer.setImageResource(R.drawable.flag_spain);
+        } else {
+            MainActivity.imgFlagQuestion.setImageResource(R.drawable.flag_spain);
+            MainActivity.imgFlagAnswer.setImageResource(R.drawable.flag_uk);
+        }
+        MainActivity.lblCorrectQuestion.setText(question);
+        MainActivity.lblCorrectAnswer.setText(correct);
 
+        playNewTerm();
     }
 
     public static void playNewTerm() {
