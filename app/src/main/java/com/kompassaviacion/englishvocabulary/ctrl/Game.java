@@ -3,6 +3,7 @@ package com.kompassaviacion.englishvocabulary.ctrl;
 import android.widget.Toast;
 
 import com.kompassaviacion.englishvocabulary.MainActivity;
+import com.kompassaviacion.englishvocabulary.R;
 import com.kompassaviacion.englishvocabulary.model.Term;
 
 import java.util.ArrayList;
@@ -45,9 +46,11 @@ public class Game {
         if (lq == 1) {
             q = vocabulary.get(numQuestion).getEnglishTerm();
             answerCorrect = vocabulary.get(numQuestion).getSpanishTerm();
+            MainActivity.imgFlag.setImageResource(R.drawable.flag_uk);
         } else {
             q = vocabulary.get(numQuestion).getSpanishTerm();
             answerCorrect = vocabulary.get(numQuestion).getEnglishTerm();
+            MainActivity.imgFlag.setImageResource(R.drawable.flag_spain);
         }
         return q;
     }

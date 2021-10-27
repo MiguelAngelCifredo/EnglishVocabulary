@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static TextView lblQuest;
     public static TextView lblUnit;
     public static TextView lblSubject;
+    public static ImageView imgFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         lblQuest = findViewById(R.id.lblQuest);
         txtIntent = findViewById(R.id.txtIntent);
         lblResult = findViewById(R.id.lblResult);
+        imgFlag = findViewById(R.id.imgFlag);
 
         String url = "https://kompassaviacion.com/english/vocabulary.txt";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
