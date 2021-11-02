@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
                 volleyError -> Toast.makeText(this, volleyError.getMessage(), Toast.LENGTH_LONG).show());
         Volley.newRequestQueue(this).add(stringRequest);
 
-        findViewById(R.id.btnCheck).setOnClickListener(v -> Game.check());
+        findViewById(R.id.linearLayoutResult).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.btnCheck).setOnClickListener(v -> {
+            findViewById(R.id.linearLayoutResult).setVisibility(View.VISIBLE);
+            Game.check();});
 
         findViewById(R.id.lblMeetMe).setOnClickListener(v-> {
             Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/miguelangelcifredo/"));
