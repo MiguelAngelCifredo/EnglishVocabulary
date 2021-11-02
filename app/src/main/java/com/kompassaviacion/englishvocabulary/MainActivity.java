@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         menu.findItem(R.id.both).setChecked(Game.getLanguageMode() == 0);
 
         menu.findItem(R.id.deleteCorrects).setChecked(Game.getDeleteCorrects());
+        menu.findItem(R.id.enableSounds).setChecked(Game.getEnableSounds());
 
         menu.findItem(R.id.unit00).setChecked(Game.getUnitVisibility(0));
         menu.findItem(R.id.unit01).setChecked(Game.getUnitVisibility(1));
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.deleteCorrects: Game.setDeleteCorrects(!Game.getDeleteCorrects()); break;
+            case R.id.enableSounds  : Game.setEnableSounds(!Game.getEnableSounds()); break;
 
             case R.id.both:    Game.setLanguageMode(0); break;
             case R.id.eng_esp: Game.setLanguageMode(1); break;

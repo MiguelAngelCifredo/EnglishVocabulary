@@ -14,6 +14,7 @@ public class Game {
     private static int numQuestion;
     private static int languageMode = 0;
     private static boolean deleteCorrects = false;
+    private static boolean enableSounds = true;
     private static String answerCorrect;
     private static int languageQuestion = 0;
 
@@ -116,16 +117,14 @@ public class Game {
         String texto = "";
         if (intent.equals(correct)) {
             texto = "CORRECT !";
-            MediaPlayer mPlayer = MediaPlayer.create(MainActivity.main, R.raw.correct);
-            mPlayer.start();
+            playSound(R.raw.correct);
             if (getDeleteCorrects()) {
                 vocabulary.remove(numQuestion);
             }
         } else {
             if (intent.length() > 0) {
                 texto = "ERROR";
-                MediaPlayer mPlayer = MediaPlayer.create(MainActivity.main, R.raw.fallo);
-                mPlayer.start();
+                playSound(R.raw.fallo);
             }
         }
         MainActivity.txtIntent.setText("");
@@ -142,6 +141,13 @@ public class Game {
         MainActivity.lblCorrectAnswer.setText(correct);
 
         playNewTerm();
+    }
+
+    private static void playSound(int sound) {
+        if (getEnableSounds()) {
+            MediaPlayer mPlayer = MediaPlayer.create(MainActivity.main, sound);
+            mPlayer.start();
+        }
     }
 
     public static void playNewTerm() {
@@ -163,5 +169,13 @@ public class Game {
             } while (cont < vocabulary.size() && !existe);
         }catch (Exception e) {}
         return existe;
+    }
+
+    public static boolean getEnableSounds() {
+        return enableSounds;
+    }
+
+    public static void setEnableSounds(boolean mode) {
+        enableSounds = mode;
     }
 }

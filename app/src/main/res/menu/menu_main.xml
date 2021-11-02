@@ -62,6 +62,9 @@
         android:id="@+id/deleteCorrects"
         android:title="Delete corrects"
         android:checkable="true"/>
-
+    <item
+        android:id="@+id/enableSounds"
+        android:title="Enable sounds"
+        android:checkable="true"/>
 
 </menu>
