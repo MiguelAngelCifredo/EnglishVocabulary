@@ -1,5 +1,6 @@
-package com.kompassaviacion.englishvocabulary;
+package com.kompassaviacion.englishvocabulary.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,8 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.kompassaviacion.englishvocabulary.R;
 import com.kompassaviacion.englishvocabulary.ctrl.Game;
 
+@SuppressLint("StaticFieldLeak")
 public class MainActivity extends AppCompatActivity {
 
     public static AppCompatActivity main;
@@ -114,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

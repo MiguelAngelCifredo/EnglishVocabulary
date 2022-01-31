@@ -2,7 +2,7 @@ package com.kompassaviacion.englishvocabulary.ctrl;
 
 import android.media.MediaPlayer;
 
-import com.kompassaviacion.englishvocabulary.MainActivity;
+import com.kompassaviacion.englishvocabulary.view.MainActivity;
 import com.kompassaviacion.englishvocabulary.R;
 import com.kompassaviacion.englishvocabulary.model.Term;
 
@@ -103,10 +103,7 @@ public class Game {
         boolean esValido;
         do {
             numQuestion = new Random().nextInt(vocabulary.size() - 1) + 1;
-            if (getUnitVisibility(0))
-                esValido = true;
-            else
-                esValido = getUnitVisibility(Integer.parseInt(vocabulary.get(numQuestion).getUnit()));
+            esValido = getUnitVisibility(0) || getUnitVisibility(Integer.parseInt(vocabulary.get(numQuestion).getUnit()));
         } while (!esValido);
     }
 
@@ -167,7 +164,7 @@ public class Game {
                 existe = uni.equals(unidad);
                 cont++;
             } while (cont < vocabulary.size() && !existe);
-        }catch (Exception e) {}
+        }catch (Exception ignore) {}
         return existe;
     }
 
