@@ -33,14 +33,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutQuestion"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="24dp"
-        android:padding="8dp"
         android:background="@drawable/frame_border"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCkeck"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblSubject">
 
@@ -76,22 +76,20 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCkeck"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutQuestion" />
 
     <LinearLayout
         android:id="@+id/linearLayoutResult"
-        android:layout_width="match_parent"
+        android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/frame_border"
         android:orientation="vertical"
         android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutQuestion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIntent">
+        app:layout_constraintStart_toStartOf="@+id/linearLayoutCkeck">
 
         <LinearLayout
             android:id="@+id/lLCorrectQuestion"
@@ -119,7 +117,7 @@
                 android:gravity="start"
                 android:text="correct question"
                 android:textColor="@color/gris"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -151,7 +149,7 @@
                 android:gravity="start"
                 android:text="correct answer"
                 android:textColor="@color/gris"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -159,21 +157,20 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutCkeck"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp"
-        android:gravity="right"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutResult">
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/lblResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:text="CORRECT"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
