@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,7 +58,11 @@ public class MainActivity extends AppCompatActivity {
         imgFlagQuestion = findViewById(R.id.imgFlagQuestion);
         imgFlagAnswer = findViewById(R.id.imgFlagAnswer);
 
-        String url = "https://kompassaviacion.com/english/vocabulary.txt";
+        if (android.os.Build.VERSION.SDK_INT > 24) {
+            findViewById(R.id.btnCheck).setRotationY(-30);
+        }
+
+        String url = "http://kompassaviacion.com/english/vocabulary.txt";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 s -> {
                     Game.generateVocabulary(s);

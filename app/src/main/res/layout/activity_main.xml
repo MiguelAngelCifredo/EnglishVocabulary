@@ -183,7 +183,6 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:background="@color/FlagAzul"
-            android:rotationY="-30"
             android:text="CHECK"
             android:textSize="20sp"
             android:textStyle="bold" />
